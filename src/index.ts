@@ -1,21 +1,27 @@
 import express from 'express'
 import ProductList from './ProductList'
-import products from './data/products'
+import db from './data/db'
 
 const app = express()
 const port = 8080 // default port to listen
 
 app.get('/', (req, res) => {
-  const over100 = new ProductList(products)
+  const { products } = db
+  const redNames = new ProductList(products)
+  const abcId = new ProductList(products)
   const under100 = new ProductList(products)
-  const startsWithP = new ProductList(products)
 
   // Can't change anything below this line
   // -------------------------------------------------
   res.send({
-    over100: over100.filter(),
-    under100: under100.filter(),
-    startsWithP: startsWithP.filter()
+    // Expect: "Red Uniform Red Phaser Red Dilithium Crystals"
+    redNames: redNames.stringify(),
+
+    // Expect: "abc-1 abc-2 abc-3"
+    abcId: abcId.stringify(),
+
+    // Expect: "Dilithium Crystals"
+    under100: under100.stringify()
   })
 })
 

@@ -7,7 +7,8 @@ export default class ProductList {
     this.products = products
   }
 
-  filter(): Product[] {
-    return []
+  // Needs to return the correctly formatted string
+  stringify(): string {
+    return ''
   }
 }
