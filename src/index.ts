@@ -1,7 +1,6 @@
 import express from 'express'
 // import Vehicle from './Vehicle'
 
-const app = express()
 const port = 8080 // default port to listen
 
 app.get('/', (req, res) => {
@@ -11,7 +10,11 @@ app.get('/', (req, res) => {
   //   jet: 'flying',
   //   car: 'driving'
   // }
-  res.send({})
+  res.send({
+    boat: '',
+    jet: '',
+    car: ''
+  })
 })
 
 // start the Express server
